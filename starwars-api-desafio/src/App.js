@@ -63,35 +63,54 @@ const onChangePage = (next) => {
 
   return (
       
-      <div>
-      <input
-        ref={inputSearch}
+      <div >
+
+<div class="input-group input-group-lg">
+  <input 
+          ref={inputSearch}
         onChange={onChangeTextSearch}
         onKeyDown={onSearchSubmit}
-        type="text"
         placeholder="Busca un personaje"
-      />
-      <ul>
-        {errorState.hasError && <div>{errorState.message}</div>}
+        type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
+</div>
+
+
+<ul class="list-group-1 list-group list-group-flush">
+{errorState.hasError && <div>{errorState.message}</div>}
         {people?.results?.map((character) => (
-        <li key={character.name} onClick={() => showDetails(character)}>{character.name}</li>
-        ))}
-      </ul>
+  <li key={character.name} onClick={() => showDetails(character)} class="list-group-item"><h4>{character.name}</h4></li>
+  ))}
+  
+</ul>
+  
 
 
-      <section>
-      <button onClick={() => onChangePage(-1)}>Prev</button>| {page} |
-      <button onClick={() => onChangePage(1)}>Next</button>
+      <section className='botones'>
+      <button class="btn btn-light" onClick={() => onChangePage(-1)}>Prev</button><h4 className='pagina'> {page} </h4> 
+      <button class="btn btn-light" onClick={() => onChangePage(1)}>Next</button>
       </section>
       {details &&
+      
+      
+      
       <aside>
-        <h1>{details.name}</h1>
-        <ul>
-          <li>height: {details.height}</li>
-          <li>mass: {details.mass}</li>
-          <li>year of birth: {details.birth_year}</li>
+        
+        <h1 className='detalleNombre'>{details.name}</h1>
+        <ul class="list-group-2 list-group list-group-flush">
+  <li class="list-group-item">height: {details.height}</li>
+  <li class="list-group-item">mass: {details.mass}</li>
+  <li class="list-group-item">hair color: {details.hair_color}</li>
+  <li class="list-group-item">skin color: {details.skin_color}</li>
+  <li class="list-group-item">eye color: {details.eye_color}</li>
+  <li class="list-group-item">gender: {details.gender}</li>
+
 
         </ul>
+        
+        
+        
+        
+       
       </aside>}
       </div>
   );
