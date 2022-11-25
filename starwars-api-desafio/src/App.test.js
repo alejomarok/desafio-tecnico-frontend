@@ -6,18 +6,7 @@ import data from './data.json'
 
 describe ('Stars Wars APP' , () => {
   beforeAll(() => jest.spyOn(window, "fetch"))
-  it('Should show a list of characters including Luke Skywalker', () => {
-    render(<App />);
-    expect(screen.getByText("Luke Skywalker")).toBeInTheDocument(); 
-    
-  });
 
-  it("should show a list of characters from JSON file", async () => {
-    render(<App />);
-    for (let character of data.results){
-      expect (screen.getByText(character.name)).toBeInTheDocument();
-    }
-  });
 
   it("should show a list of characters from the API", async () => {
       window.fetch.mockResolvedValueOnce({
@@ -32,4 +21,11 @@ describe ('Stars Wars APP' , () => {
         expect(await screen.findByText(character.name)).toBeInTheDocument
       }
   });
+
+  ir('should show an error message when has a network error', async () => {
+    window.fetch.mockRejectedValueOnce(new Error("Network error"));
+
+    render (<App />);
+    expect(await screen.findByText("Network Error")).toBeInTheDocument();
+  })
 }); 
