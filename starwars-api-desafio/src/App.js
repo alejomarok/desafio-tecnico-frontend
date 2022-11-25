@@ -1,13 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
-import { getCharacter, getPeople } from './api/people';
+import { getCharacter, getPeople, searchCharacter } from './api/people';
 import './App.css';
 
-import data from "./data.json";
+//import data from "./data.json";
 
 
 
 function App() {
-      const inputSearch = useRef;
+      const inputSearch = useRef(null);
       const [textSearch, setTextSearch] = useState("");
       const [people, setPeople] = useState([]);
       const [currentCharacter, setCurrentCharacter] = useState(1); 
@@ -41,10 +41,25 @@ function App() {
   setTextSearch(text);
  }
 
+ const onSearchSubmit = (event) => {
+  if (event.key !== "Enter") return;
+
+  inputSearch.current.value = "";
+  setDetails({});
+  searchCharacter(textSearch)
+  .then((data) => setPeople(data.results))
+  .catch(handleError);
+};
   return (
       
       <div>
-        <input ref={inputSearch} onChange={onChangeTextSearch} type="text" placeholder='BUSCA UN PERSONAJE'/>
+      <input
+        ref={inputSearch}
+        onChange={onChangeTextSearch}
+        onKeyDown={onSearchSubmit}
+        type="text"
+        placeholder="Busca un personaje"
+      />
       <ul>
         {errorState.hasError && <div>{errorState.message}</div>}
         {people.map((character) => (
