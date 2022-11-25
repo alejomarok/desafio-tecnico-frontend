@@ -78,7 +78,7 @@ const onChangePage = (next) => {
 <ul class="list-group-1 list-group list-group-flush">
 {errorState.hasError && <div>{errorState.message}</div>}
         {people?.results?.map((character) => (
-  <li key={character.name} onClick={() => showDetails(character)} class="list-group-item"><h4>{character.name}</h4></li>
+  <li key={character.name} onClick={() => showDetails(character)} class="list-group-item"><h4 className='personajes'>{character.name}</h4></li>
   ))}
   
 </ul>
