@@ -22,10 +22,10 @@ describe ('Stars Wars APP' , () => {
       }
   });
 
-  ir('should show an error message when has a network error', async () => {
+  it('should show an error message when has a network error', async () => {
     window.fetch.mockRejectedValueOnce(new Error("Network error"));
 
     render (<App />);
-    expect(await screen.findByText("Network Error")).toBeInTheDocument();
+    expect(await screen.findByText(/Network error/i)).toBeInTheDocument();
   })
 }); 
