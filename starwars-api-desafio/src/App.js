@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { getCharacter, getPeople } from './api/people';
 import './App.css';
 
@@ -7,6 +7,8 @@ import data from "./data.json";
 
 
 function App() {
+      const inputSearch = useRef;
+      const [textSearch, setTextSearch] = useState("");
       const [people, setPeople] = useState([]);
       const [currentCharacter, setCurrentCharacter] = useState(1); 
       const [errorState, setErrorState] = useState({ hasError: false })
@@ -33,9 +35,16 @@ function App() {
     //useEffect
  }
  
-  return (
+ const onChangeTextSearch = (event) => {
+  event.preventDefault();
+  const text = inputSearch.current.value;
+  setTextSearch(text);
+ }
 
+  return (
+      
       <div>
+        <input ref={inputSearch} onChange={onChangeTextSearch} type="text" placeholder='BUSCA UN PERSONAJE'/>
       <ul>
         {errorState.hasError && <div>{errorState.message}</div>}
         {people.map((character) => (
