@@ -72,3 +72,13 @@ body {
 .personajes {
     cursor: pointer;
 }
+
+.imagen-pagina {width: 800px ; height: 400px;} 
+
+
+@media (max-width: 768px) {
+.imagen-pagina {
+    width: 400px ; height: 200px;
+
+}
+}
