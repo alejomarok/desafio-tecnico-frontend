@@ -97,12 +97,12 @@ const onChangePage = (next) => {
         
         <h1 className='detalleNombre'>{details.name}</h1>
         <ul class="list-group-2 list-group list-group-flush">
-  <li class="list-group-item">height: {details.height}</li>
-  <li class="list-group-item">mass: {details.mass}</li>
-  <li class="list-group-item">hair color: {details.hair_color}</li>
-  <li class="list-group-item">skin color: {details.skin_color}</li>
-  <li class="list-group-item">eye color: {details.eye_color}</li>
-  <li class="list-group-item">gender: {details.gender}</li>
+  <li class="list-group-item"><b>Height: </b>{details.height}</li>
+  <li class="list-group-item"><b>Mass: </b>{details.mass}</li>
+  <li class="list-group-item"><b>Hair color: </b>{details.hair_color}</li>
+  <li class="list-group-item"><b>Skin color: </b>{details.skin_color}</li>
+  <li class="list-group-item"><b>Eye color: </b>{details.eye_color}</li>
+  <li class="list-group-item"><b>Gender: </b>{details.gender}</li>
 
 
         </ul>
